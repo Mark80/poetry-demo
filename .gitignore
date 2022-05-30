@@ -1,2 +1,4 @@
 /poetry-demo.iml
-/.idea/
+.idea
+poetry_demo/__pycache__/
+tests/__pycache__/

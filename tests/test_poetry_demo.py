@@ -1,5 +1,6 @@
 from poetry_demo import __version__
+from poetry_demo.euler import *
 
 
 def test_version():
-    assert __version__ == '0.1.0'
+    print(calculate_total_name_value())

@@ -6,5 +6,8 @@ def test_version():
 
 
 def test_primes():
-    #assert primes(100) == [2, 3, 5, 7, 11, 13, 17]
     print(problem_27())
+
+
+def test_coin():
+    print(problem_31())

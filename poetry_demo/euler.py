@@ -31,7 +31,6 @@ def problem_27():
     max_b = -1000
     count = 0
     max_value = 2 * (1000 * 1000) + 1000
-    print(max_value)
     primi = primes(max_value)
     for a in range(-1000, 1000):
         for b in range(-1000, 1000):
@@ -80,3 +79,38 @@ def binary_search(lst, target):
         else:
             return mid
     return -1
+
+
+def problem_31():
+    p = 1
+    p2 = 2
+    p5 = 5
+    p10 = 10
+    p20 = 20
+    p50 = 50
+    l = 100
+    l2 = 200
+
+    count = 0
+
+    for p1i in range(0, 201):
+        for p2i in range(0, 101):
+            if (p * p1i) + (p2 * p2i) <= 200:
+                for p5i in range(0, 41):
+                    if (p * p1i) + (p2 * p2i) + (p5 * p5i) <= 200:
+                        for p10i in range(0, 21):
+                            if (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) <= 200:
+                                for p20i in range(0, 11):
+                                    if (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (p20 * p20i) <= 200:
+                                        for p50i in range(0, 5):
+                                            if (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (p20 * p20i) + (p50 * p50i) <= 200:
+                                                for li in range(0, 3):
+                                                    if (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (
+                                                            p20 * p20i) + (p50 * p50i) + (li * l) <= 200:
+                                                        for l2i in range(0, 2):
+                                                            value = (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (
+                                                                        p20 * p20i) + (p50 * p50i) + (li * l) + (l2 * l2i)
+                                                            if value == 200:
+                                                                count += 1
+
+    return count

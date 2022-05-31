@@ -103,14 +103,28 @@ def problem_31():
                                 for p20i in range(0, 11):
                                     if (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (p20 * p20i) <= 200:
                                         for p50i in range(0, 5):
-                                            if (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (p20 * p20i) + (p50 * p50i) <= 200:
+                                            if (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (p20 * p20i) + (
+                                                    p50 * p50i) <= 200:
                                                 for li in range(0, 3):
                                                     if (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (
                                                             p20 * p20i) + (p50 * p50i) + (li * l) <= 200:
                                                         for l2i in range(0, 2):
-                                                            value = (p * p1i) + (p2 * p2i) + (p5 * p5i) + (p10 * p10i) + (
-                                                                        p20 * p20i) + (p50 * p50i) + (li * l) + (l2 * l2i)
+                                                            value = (p * p1i) + (p2 * p2i) + (p5 * p5i) + (
+                                                                    p10 * p10i) + (
+                                                                            p20 * p20i) + (p50 * p50i) + (li * l) + (
+                                                                            l2 * l2i)
                                                             if value == 200:
                                                                 count += 1
 
     return count
+
+
+def problem_48():
+    result = 0
+    for i in range(1, 1001):
+        prod = 1
+        for l in range(1, i + 1):
+            prod = (prod * i) % 10_000_000_000
+        result = (result + prod) % 10_000_000_000
+
+    return result

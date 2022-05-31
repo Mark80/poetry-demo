@@ -10,4 +10,8 @@ def test_primes():
 
 
 def test_coin():
-    print(problem_31())
+    assert problem_31() == 73682
+
+
+def test_problem_48():
+    print(problem_48())

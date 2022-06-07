@@ -25,8 +25,4 @@ def test_problem_38():
     print(problem_38())
 
 
-def test_problem_p():
-    value = "918273645"
-    print(set(value))
-
 

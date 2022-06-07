@@ -15,3 +15,8 @@ def test_coin():
 
 def test_problem_48():
     print(problem_48())
+
+
+def test_problem_24():
+    print(problem_24())
+

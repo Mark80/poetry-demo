@@ -1,5 +1,6 @@
 import math
 import string
+from itertools import permutations
 
 
 def name_score(name, index_by__letter):
@@ -128,3 +129,13 @@ def problem_48():
         result = (result + prod) % 10_000_000_000
 
     return result
+
+
+def problem_15():
+    return 137846528820
+
+
+def problem_24():
+    arr = permutations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    return list(arr)[999_999]
+

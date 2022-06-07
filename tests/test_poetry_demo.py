@@ -20,3 +20,13 @@ def test_problem_48():
 def test_problem_24():
     print(problem_24())
 
+
+def test_problem_38():
+    print(problem_38())
+
+
+def test_problem_p():
+    value = "918273645"
+    print(set(value))
+
+

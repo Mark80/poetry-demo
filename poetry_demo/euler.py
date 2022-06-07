@@ -139,3 +139,17 @@ def problem_24():
     arr = permutations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
     return list(arr)[999_999]
 
+
+def problem_38():
+    max = 0
+    for r in range(1, 11):
+        for n in range(1, 98765):
+            value = ""
+            for d_r in range(1, r + 1):
+                value = value + str(n * d_r)
+            if len(value) == 9 and len(set(value).intersection({'1', '2', '3', '4', '5', '6', '7', '8', '9'})) == 9:
+                int_v = int(value)
+                if int_v > max:
+                    max = int_v
+
+    return max

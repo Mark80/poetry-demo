@@ -150,6 +150,7 @@ def problem_38():
             if len(value) == 9 and len(set(value).intersection({'1', '2', '3', '4', '5', '6', '7', '8', '9'})) == 9:
                 int_v = int(value)
                 if int_v > max:
+
                     max = int_v
 
     return max

@@ -25,4 +25,5 @@ def test_problem_38():
     print(problem_38())
 
 
-
+def test_problem_18():
+    print(problem_18())

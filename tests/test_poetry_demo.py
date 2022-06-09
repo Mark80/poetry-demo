@@ -27,3 +27,7 @@ def test_problem_38():
 
 def test_problem_18():
     print(problem_18())
+
+
+def test_problem_67():
+    print(problem_67())

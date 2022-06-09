@@ -197,3 +197,27 @@ def sum_two_list(list_1, list_2):
         index_2 += 1
 
     return result
+
+
+def problem_67():
+    triangle = read_file()
+    index = 1
+    r = triangle[0]
+    while index < len(triangle):
+        r = sum_two_list(r, triangle[index])
+        index += 1
+
+    return r
+
+
+def read_file():
+    with open("/Users/marco.tosini/toy-project/poetry-demo/poetry_demo/triangle.txt") as file:
+        content = file.readlines()
+    rows_list = []
+    for line in content:
+        values = list(line.replace("\n", "").split(" "))
+        num_list = []
+        for v in values:
+            num_list.append(int(v))
+        rows_list.append(num_list)
+    return list(reversed(rows_list))

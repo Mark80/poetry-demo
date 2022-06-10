@@ -174,13 +174,7 @@ def problem_18():
         , [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
     ]
     triangle = list(reversed(tri))
-    index = 1
-    r = triangle[0]
-    while index < 15:
-        r = sum_two_list(r, triangle[index])
-        index += 1
-
-    return r
+    return execute(triangle)
 
 
 def sum_two_list(list_1, list_2):
@@ -201,13 +195,44 @@ def sum_two_list(list_1, list_2):
 
 def problem_67():
     triangle = read_file()
+    return execute(triangle)
+
+
+def execute(triangle):
     index = 1
     r = triangle[0]
     while index < len(triangle):
         r = sum_two_list(r, triangle[index])
         index += 1
-
     return r
+
+
+def problem_11():
+    with open("/Users/marco.tosini/toy-project/poetry-demo/poetry_demo/square.txt") as file:
+        lines = file.readlines()
+    numbers = []
+    for line in lines:
+        values = list(line.replace("\n", "").split(" "))
+        for v in values:
+            numbers.append(int(v))
+    max_value = 0
+    for i, _ in enumerate(numbers):
+        prod = 1
+        prod_2 = 1
+        prod_3 = 1
+        prod_4 = 1
+        if i + 3 < len(numbers):
+            prod = numbers[i] * numbers[i + 1] * numbers[i + 2] * numbers[i + 3]
+        if i + 60 < len(numbers):
+            prod_2 = numbers[i] * numbers[i + 20] * numbers[i + 40] * numbers[i + 60]
+        if i + 63 < len(numbers):
+            prod_3 = numbers[i] * numbers[i + 21] * numbers[i + 42] * numbers[i + 63]
+        if i + 63 < len(numbers):
+            prod_4 = numbers[i] * numbers[i + 19] * numbers[i + 38] * numbers[i + 57]
+        m = max(prod_2, prod, prod_3, prod_4)
+        if m > max_value:
+            max_value = m
+    return max_value
 
 
 def read_file():

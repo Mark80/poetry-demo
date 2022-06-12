@@ -39,3 +39,7 @@ def test_problem_11():
 
 def test_problem_23():
     print(problem_23())
+
+
+def test_problem_28():
+    print(problem_28())

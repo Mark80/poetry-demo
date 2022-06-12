@@ -276,3 +276,17 @@ def abundant_number_list():
             abundant_numbers.append(n)
 
     return abundant_numbers
+
+
+def problem_28():
+    d = 1001
+    r = 0
+    while d > 1:
+        r_up = (d * d)
+        l_up = r_up - d + 1
+        l_down = l_up - d + 1
+        r_down = l_down - d + 1
+        print(r_up, l_up, l_down, r_down)
+        r += r_up + l_up + l_down + r_down
+        d -= 2
+    return r + 1

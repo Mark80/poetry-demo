@@ -246,3 +246,33 @@ def read_file():
             num_list.append(int(v))
         rows_list.append(num_list)
     return list(reversed(rows_list))
+
+
+def problem_23():
+    ab_n = abundant_number_list()
+    all_sum_ab = 0
+    all_sum = set()
+    for i in ab_n:
+        for j in ab_n:
+            p = i + j
+            if p < 28124:
+                all_sum.add(p)
+    for i in range(1, 28124):
+        check = (i in all_sum)
+        if not check:
+            all_sum_ab += i
+
+    return all_sum_ab
+
+
+def abundant_number_list():
+    abundant_numbers = []
+    for n in range(1, 28124):
+        s = 0
+        for div in range(1, n):
+            if n % div == 0:
+                s += div
+        if s > n:
+            abundant_numbers.append(n)
+
+    return abundant_numbers

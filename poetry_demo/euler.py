@@ -68,6 +68,24 @@ def primes(n):
     return nums_primes
 
 
+def primes_less(n):
+    nums_primes = [2, 3]
+    for i in range(5, n + 1, 2):
+        sqrt = int(math.sqrt(i))
+        is_prime = True
+        count = 2
+        while is_prime and count <= sqrt:
+            if i % count == 0:
+                is_prime = False
+            count += 1
+        if i > n:
+            break
+        if is_prime:
+            nums_primes.append(i)
+
+    return nums_primes
+
+
 def binary_search(lst, target):
     start = 0
     end = len(lst) - 1
@@ -290,3 +308,42 @@ def problem_28():
         r += r_up + l_up + l_down + r_down
         d -= 2
     return r + 1
+
+
+def problem_25():
+    count = 0
+    index = 1
+    a = 0
+    b = 1
+
+    while count < 1000:
+        c = a + b
+        count = len(str(c))
+        a = b
+        b = c
+        index += 1
+
+    return index
+
+
+def problem_50():
+    primes = primes_less(1_000_000)
+    primes_set = set(primes)
+
+    max_p = 0
+    max_count = 0
+    start_index = 0
+    while start_index < 1_000_000:
+        window = primes[start_index:len(primes)]
+        partial_sum = 0
+        count = 0
+        for v in window:
+            partial_sum += v
+            count += 1
+            if partial_sum > 1_000_000:
+                break
+            if partial_sum in primes_set and count > max_count:
+                max_count = count
+                max_p = partial_sum
+        start_index += 1
+    return max_p

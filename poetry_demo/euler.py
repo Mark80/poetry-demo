@@ -1,5 +1,6 @@
 import math
 import string
+
 from itertools import permutations
 
 
@@ -333,6 +334,7 @@ def problem_50():
     max_p = 0
     max_count = 0
     start_index = 0
+    max_index = 0
     while start_index < 1_000_000:
         window = primes[start_index:len(primes)]
         partial_sum = 0
@@ -344,6 +346,35 @@ def problem_50():
                 break
             if partial_sum in primes_set and count > max_count:
                 max_count = count
+                max_index = start_index
                 max_p = partial_sum
         start_index += 1
+    print(max_index)
     return max_p
+
+
+def problem_29():
+    p_set = set()
+    for a in range(2, 101):
+        for b in range(2, 101):
+            r = math.pow(a, b)
+            p_set.add(r)
+
+    return len(p_set)
+
+
+def problem_30():
+    r = 0
+    for i in range(2, 1000000):
+        if is_sum_of_power_fifty(i):
+            print(i)
+            r += i
+    return r
+
+
+def is_sum_of_power_fifty(n):
+    digits = str(n)
+    s = 0
+    for v in digits:
+        s += math.pow(int(v), 5)
+    return s == n

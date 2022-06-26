@@ -2,3 +2,4 @@
 .idea
 poetry_demo/__pycache__/
 tests/__pycache__/
+.idea/misc.xml

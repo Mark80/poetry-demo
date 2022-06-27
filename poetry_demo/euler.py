@@ -378,3 +378,22 @@ def is_sum_of_power_fifty(n):
     for v in digits:
         s += math.pow(int(v), 5)
     return s == n
+
+
+def problem_44():
+    pentagonal = []
+
+    for n in range(2, 10000):
+        pentagonal.append((n * ((3 * n) - 1)) / 2)
+    set_p = set(pentagonal)
+    r = 0
+    print(len(pentagonal))
+    for a in range(0, len(pentagonal)):
+        for b in range(a, len(pentagonal) - 1):
+            s = pentagonal[a] + pentagonal[b]
+            d = abs(pentagonal[a] - pentagonal[b])
+            if s in set_p and d in set_p:
+                print(pentagonal[a], pentagonal[b])
+                r = abs(pentagonal[a] - pentagonal[b])
+
+    return r

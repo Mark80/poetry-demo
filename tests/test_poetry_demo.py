@@ -59,3 +59,7 @@ def test_problem_29():
 
 def test_problem_30():
     print(problem_30())
+
+
+def test_problem_44():
+    print(problem_44())

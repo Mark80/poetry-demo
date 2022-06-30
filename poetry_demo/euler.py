@@ -69,7 +69,7 @@ def primes(n):
     return nums_primes
 
 
-def primes_less(n):
+def primes_less_then(n):
     nums_primes = [2, 3]
     for i in range(5, n + 1, 2):
         sqrt = int(math.sqrt(i))
@@ -328,7 +328,7 @@ def problem_25():
 
 
 def problem_50():
-    primes = primes_less(1_000_000)
+    primes = primes_less_then(1_000_000)
     primes_set = set(primes)
 
     max_p = 0
@@ -397,3 +397,49 @@ def problem_44():
                 r = abs(pentagonal[a] - pentagonal[b])
 
     return r
+
+
+def is_pandigital(n, s=9): return len(n) == s and not '1234567890'[:s].strip(n)
+
+
+def problem_32():
+    p = set()
+    for i in range(2, 99):
+        j = i + 1
+        while i * j < 8999:
+            if is_pandigital(str(i) + str(j) + str(i * j), 9):
+                p.add(i * j)
+            j += 1
+    return sum(p)
+
+
+def problem_35():
+    pr = primes_less_then(1_000_000)
+    pr_disp = []
+    for p in pr:
+        p_str = str(p)
+        if not (p_str.__contains__("2") or p_str.__contains__("4") or p_str.__contains__("6") or p_str.__contains__(
+                "8") or p_str.__contains__("5")):
+            pr_disp.append(p)
+    i = 0
+    set_p = set(pr_disp)
+    for p in pr_disp:
+        all_circular = get_circular(p)
+        check = True
+        for l in all_circular:
+            check = check and l in set_p
+        if check and len(all_circular) > 0:
+            i += 1
+    return i + 2
+
+
+def get_circular(p):
+    p_str = str(p)
+    count = len(p_str) - 1
+    nums = [p]
+    while count > 0:
+        p_str = p_str[1:len(p_str)] + p_str[0]
+        nums.append(int(p_str))
+        count -= 1
+    nums.sort()
+    return nums

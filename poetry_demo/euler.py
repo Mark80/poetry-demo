@@ -443,3 +443,42 @@ def get_circular(p):
         count -= 1
     nums.sort()
     return nums
+
+
+def problem_37():
+    prs = primes_less_then(1000000)
+    s = []
+    for p in prs[4:]:
+        if is_trunkable_prime(prs, p):
+            s.append(p)
+        if len(s) == 11:
+            break
+    print(s)
+    return sum(s)
+
+
+def is_trunkable_prime(primes, p):
+    s = str(p)
+    if s.__contains__("2") or s.__contains__("4") or s.__contains__("6") \
+            or s.__contains__("8") or s.__contains__("8") or s.__contains__("5"):
+        return False
+    else:
+        return is_truncable_prime_left(primes, p) and is_truncable_prime_right(primes, p)
+
+
+def is_truncable_prime_left(primes, p):
+    if p <= 9:
+        return p in {2, 3, 5, 7}
+    else:
+        np_l = int(str(p)[1:])
+        return primes.__contains__(np_l) \
+               and is_truncable_prime_left(primes, np_l)
+
+
+def is_truncable_prime_right(primes, p):
+    if p <= 9:
+        return p in {2, 3, 5, 7}
+    else:
+        np_r = int(str(p)[0:len(str(p)) - 1])
+        return primes.__contains__(np_r) \
+               and is_truncable_prime_right(primes, np_r)

@@ -482,3 +482,42 @@ def is_truncable_prime_right(primes, p):
         np_r = int(str(p)[0:len(str(p)) - 1])
         return primes.__contains__(np_r) \
                and is_truncable_prime_right(primes, np_r)
+
+
+def problem_46():
+    pr = primes_less_then(1_0000_000)
+    odd = 35
+    p_index = 0
+    to_square = 1
+
+    while pr[p_index] < odd:
+        double_square = 2 * (to_square * to_square)
+        while double_square < odd:
+            sum = pr[p_index] + 2 * (to_square * to_square)
+            if sum < odd:
+                to_square += 1
+        p_index += 1
+
+    return odd
+
+
+def problem_40():
+    count_digit = 0
+    n = 1
+    result = 1
+    digit_res = 0
+    while digit_res < 7:
+        d = digit_long(n)
+        index = 0
+        while index < d:
+            count_digit += 1
+            if count_digit == 1 or count_digit == 10 or count_digit == 100 or count_digit == 1000 or count_digit == 10000 or count_digit == 100000 or count_digit == 1000000:
+                result *= int(str(n)[index])
+                digit_res += 1
+            index += 1
+        n += 1
+    return result
+
+
+def digit_long(n):
+    return len(str(n))
